@@ -7,14 +7,14 @@ export CD_STYLE=nondestructive
 export CD_PATH_FORMAT=logical
 
 # helper functions
-_cd()     { eval "$($CD_BIN/cdext-ccd $*)";}
+_mycd()     { eval "$($CD_BIN/cdext-ccd $*)";}
 _delete() { eval "$($CD_BIN/cdext-delete $*)";}
 _list()   { $CD_BIN/cdext-list $*; }
 _save()   { eval "$($CD_BIN/cdext-save $*)";}
 _setcd()  { eval "$($CD_BIN/cdext-setcd $*)";}
 
 # aliased commands
-alias cd=_cd
+alias cd=_mycd
 alias cd.delete=_delete
 alias cd.delet=_delete
 alias cd.dele=_delete

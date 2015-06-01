@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 2.8)
 
 project(cdext)
 
-set(VERSION "1.2.1")
+set(VERSION "1.2.2")
 set(COMMON_SRC cd-ext.c parse.c)
 
 add_executable(cdext-ccd    ${COMMON_SRC} ccd.c)
