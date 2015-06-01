@@ -1,7 +1,28 @@
+CD Extension for Unix shell environments.
+================================================================================
 
+This project provides a change directory extensions/enhancements for bash, sh, 
+ksh, csh, and tsh shells to their built-in cd command. The extensions provide 
+alias names for directory paths, environment variables based on the alias names.
+The cdext competes with pushd/popd.
 
+REQUIREMENTS:
 
+	UNIX operating system
+	UNIX ANSI c compiler
+	UNIX shell( bash, bourne(sh), csh, korn shell(ksh), tcsh )
 
+o	Build
+	$ mkdir out
+	$ cd out
+	$ cmake ..
+	$ make
 
+o	Build RPM 
+	$ make package
 
+o Install RPM
+	$ rpm -Ivh cdext-1.2.0-0.x86_64.rpm
 
+o Man Page
+	$ man cdext
