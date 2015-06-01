@@ -33,7 +33,7 @@ alias cd.sa=_save
 alias cd.s=_save
 alias cd.ls="_list stack"
 
-setcd
-setcd stack size  $CD_SIZE
-setcd stack style $CD_STYLE
-setcd path format $CD_PATH_FORMAT
+_setcd
+_setcd stack size  $CD_SIZE
+_setcd stack style $CD_STYLE
+_setcd path format $CD_PATH_FORMAT
