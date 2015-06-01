@@ -1,0 +1,120 @@
+'\" t
+.\" @(#)cdext.1
+.\"
+.TH cdext 1 "01 July 04"
+.SH NAME
+cd Extension 4.x for UNIX \(bash, csh, ksh, sh, tcsh\) shell
+
+.SH Legend:
+    []   optional parameter(s)
+    ()   required parameter(s)
+    |    or 
+    <>   required variable name
+
+.SH SYNTAX
+
+.SH    cd [ <path> ] | [ to <short name> | <entry #> [<path>] ] | [ - [ # ] ]
+no parms		return to user's home directory
+<path>		valid unix path
+..[...]		traverse parent directories 
+to <short name>	cd to the path the short name is associated
+to <sname> <path> cd to the path the short name is associated 
+                  with and then cd to the specified unix path
+to <entry #>      cd to the path associated with the directory entry #.
+-			return to the previous directory
+- #		return to the directory specified on the stack
+
+.SH    delete|cd.d*elete 
+	[ ALL ] |[ <short name> | # | #-# [, <short name> | # | #-# [ , ... ] ]
+
+      ALL	   delete "all" cd list entries
+      <short name> delete cd list entry with short name of <short name>
+      #		   delete cd list entry by associated number
+      #-#          delete range from <number> to <number>
+
+.SH    save|cd.s*ave
+	[as <short name> [to [user] <path/username>] [absolute | logical]] | 
+	[<path> as <short name>] 
+	
+      no parms		   save current working directory as "_"
+      as <short name>      save cwd as the short name variable
+      as <short name> to <path/username>
+      as <short name> to user <path/username>
+			   save cwd as the short name variable
+		           under the user specified directory listing
+		           -- e.g. save as homebase to user ~jnewell
+
+      <path> as <s_name>   save path name variable as a short name variable
+
+      absolute | logical   will indicate to cd-extensions to save the logical path
+			   name or the absolute path name of the current working
+			   directory
+
+.SH    list|cd.l*ist [ [ stack ] | [ by name ] ]
+
+      no parms	print to stdout a listing of the cd entries
+      stack	print to stdout a listing of the stack entries 
+      by name   print to stdout a listing of the cd entries
+		in aplhabetic order ( note : listing is saved )
+
+.SH    setcd|cd.s*et [ all ] | [ user to ( <user name> | home ) ] | 
+          	 [ stack style <dest[ructive] | nond[estructive]> ] |
+          	 [ stack size <#> ] | [ path format <absolute|logical> ]
+          
+      no parms	same as setcd all
+      all	setcd all sets all the cd entries as environment variables
+		-- essentially setting: setenv <short_name> <path_name> and
+		-- set <short_name>=<path_name> for csh, and 
+		-- <short_name>=<path_name>; export <short_name> for all other 
+		-- shells
+      user to <path\username>
+		set home directory to the user name
+		-- provides access to other user's cd entries
+		-- path\username is the location of the .DIR_LIST.INI file
+		-- cd <return> returns to the new user's home directory
+      user to home
+		set home directory back to the original user using the CD_HOME
+		-- environment variable set at initialization
+      stack style <dest[ructive] | nond[estructive]>
+                destructive stack pops the number of paths of the stack
+                -- nondestructive stack traverses the stack in read-only mode
+      stack size <#>
+                set the size the maximum size of the stack
+                -- the maximum limit is 35 and anything set over that will
+		-- be set to 35:(performance of a larger stack degrades the cd
+		-- extensions performance)
+		-- minimum stack size is 1.
+      path format <absolute|logical>	
+		-- will indicate to cd-extensions to save the logical path
+		-- name or the absolute path name of the current working
+		-- directory
+
+.SH SUMMARY
+
+     cd       [ <path> ] | [ to <short name> [<path>] ] | [ - [ # ] ]
+[cd.]d*elete  [ ALL ] | 
+	      [ <short name> | # | #-# [, <short name> | # | #-# [ , ... ] ]
+[cd.]s*ave    [ as <short name> [ to [ user ] <path/username> ] ] | 
+	      [  <path> as <short name> ] 
+[cd.]l*ist    [ [ stack ] | [ by name ] ]
+[cd.]se*t{cd} [ all ] | 
+	      [ user to ( <user name> | home ) ] | 
+              [ stack style <dest[ructive] | nond[estructive]> ] |
+              [ stack size <#> ]
+
+
+.SH NOTES 
+ o cd is case sensitive \( a good thing \).
+ o Supports a maximum of \(100\) cd entries.
+ o Environment variables are dynamic per shell.
+ o If you save a path in one shell, you do not have access to the environment
+   variable in another shell until you \"setcd all\" or \"setcd.\"  Although, you
+   do have immediate access to the path in the same shell via cd command.
+ o The stack is dynamic to each shell.  One shell does not posses the ability
+   to read another shell's stack entries.
+ o All commands have object designed executables for the OOD people of 
+   the universe.  [cd.] aliases are not available in the Bourne Shell.
+ o The [cd.] aliases also provide short cut completion of the commands.  For
+   examle, the [cd.]l*ist command can be execute as follows: (cd.list, cd.lis,
+   cd.li, and cd.l).
+

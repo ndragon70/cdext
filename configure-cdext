@@ -1,0 +1,15 @@
+#!/bin/bash 
+
+BUILDROOT=$1
+
+if [ -f $BUILDROOT/etc/bash.bashrc ]; then
+   if [[ ! $(grep cdext $BUILDROOT/etc/bash.bashrc) ]]; then
+      echo ". $BUILDROOT/etc/cdext-setup.bash" >> $BUILDROOT/etc/bash.bashrc
+   fi
+elif [ -d $BUILDROOT/etc/profile.d ]; then
+   if [ -f $BUILDROOT/etc/profile.d/cdext-setup.sh ]; then
+   	 ln -sf $BUILDROOT/etc/cdext-setup.bash $BUILDROOT/etc/profile.d/cdext-setup.sh
+   fi
+else
+   echo "${0##*/}: does not know how to setup CD Extensions for this system type: $(uname -s)"
+fi

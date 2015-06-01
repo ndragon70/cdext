@@ -1,0 +1,40 @@
+
+COMMON_INCS = cd-ext.h parse.h
+COMMON_OBJS = cd-ext.o parse.o
+CFLAGS = -g -O0
+ALL: cdext-ccd cdext-save cdext-list cdext-delete cdext-setcd
+
+cdext-ccd: cd-ext.h $(COMMON_OBJS) ccd.o
+	$(CC) $(CFLAGS) -o $@ $(COMMON_OBJS) ccd.o
+
+cdext-save: $(COMMON_OBJS) save.o
+	$(CC) $(CFALGS) -o $@ $(COMMON_OBJS) save.o
+
+cdext-list: $(COMMON_INCS) $(COMMON_OBJS) list.o
+	$(CC) $(CFALGS) -o $@ $(COMMON_OBJS) list.o
+
+cdext-delete: $(COMMON_INCS) $(COMMON_OBJS) delete.o
+	$(CC) $(CFALGS) -o $@ $(COMMON_OBJS) delete.o
+
+cdext-setcd: $(COMMON_INCS) $(COMMON_OBJS) setcd.o
+	$(CC) $(CFALGS) -o $@ $(COMMON_OBJS) setcd.o
+
+install: cdext-ccd cdext-save cdext-delete cdext-list cdext-setcd
+	install -d $(BUILDROOT)/usr/local/bin
+	install -m u=rwx,go=rx cdext-ccd $(BUILDROOT)/usr/local/bin
+	install -m u=rwx,go=rx cdext-save $(BUILDROOT)/usr/local/bin
+	install -m u=rwx,go=rx cdext-delete $(BUILDROOT)/usr/local/bin
+	install -m u=rwx,go=rx cdext-list $(BUILDROOT)/usr/local/bin
+	install -m u=rwx,go=rx cdext-setcd $(BUILDROOT)/usr/local/bin
+	install -d $(BUILDROOT)/usr/man/man1
+	install -m u=rwx,g=rx,o= cdext.1 $(BUILDROOT)/usr/man/man1
+	install -d $(BUILDROOT)/etc/cdext
+	install -m u=rwx,go=rx cdext-setup.bash $(BUILDROOT)/etc/cdext/bash.conf
+	install -m u=rwx,go=rx cdext-setup.csh $(BUILDROOT)/etc/cdext/csh.conf
+	install -m u=rwx,go=rx cdext-setup.ksh $(BUILDROOT)/etc/cdext/ksh.conf
+	install -m u=rwx,go=rx cdext-setup.sh $(BUILDROOT)/etc/cdext/sh.conf
+	./configure-cdext $(BUILDROOT)
+
+clean:
+	rm -f $(COMMON_OBJS) ccd.o save.o list.o delete.o setcd.o *.exe
+	rm -f cdext-ccd cdext-save cdext-list cdext-delete cdext-setcd

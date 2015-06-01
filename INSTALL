@@ -1,0 +1,20 @@
+================================================================================
+Installing the CD Extension for Unix shell environment.
+
+
+REQUIREMENTS:
+
+	UNIX operating system
+	UNIX ANSI c compiler
+	UNIX shell( bash, bourne(sh), csh, korn shell(ksh), tcsh )
+	CD Extension Version 1.x
+	
+o	Build and Install
+	$ make install
+
+o	Build RPM File (must be root)
+	$ rpmbuild -ta cdext-1.x-x.tar.gz 
+	$ rpm -ivh /usr/src/redhat/RPMS/*/cdext-1.*.rpm
+
+================================================================================
+
