@@ -3,7 +3,6 @@
 rm -rf build
 mkdir build
 cd build
-cmake ..
+cmake -DCPACK_PACKAGE_RELEASE=${BUILD_NUMBER:-0} ..
 make
 make package
-
