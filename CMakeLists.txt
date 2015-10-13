@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 3.0)
 
 project(cdext)
 
-set(VERSION "1.2.4")
+set(VERSION "1.2.5")
 set(COMMON_SRC cd-ext.c parse.c)
 
 add_executable(cdext-ccd    ${COMMON_SRC} ccd.c)
@@ -24,6 +24,8 @@ set(CPACK_PACKAGE_VERSION ${VERSION})
 set(CPACK_GENERATOR "RPM")
 set(CPACK_PACKAGE_NAME "cdext")
 set(CPACK_PACKAGE_RELEASE 0)
+# need the space or the if not variable check fails
+set(CPACK_RPM_PACKAGE_RELEASE "0 ")
 set(CPACK_PACKAGE_CONTACT "James Newell")
 set(CPACK_PACKAGE_VENDOR "Newell Inc")
 set(CPACK_PACKAGING_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX})
