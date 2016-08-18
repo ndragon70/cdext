@@ -1,17 +1,15 @@
 export CD_BIN=/usr/local/bin
-export CD_PRE=cdext
 export CD_HOME=$HOME
-export CD_SHELL_TYPE=bash
 export CD_SIZE=10
 export CD_STYLE=nondestructive
 export CD_PATH_FORMAT=logical
 
 # helper functions
-_mycd()     { eval "$($CD_BIN/cdext-ccd $*)";}
-_delete() { eval "$($CD_BIN/cdext-delete $*)";}
-_list()   { $CD_BIN/cdext-list $*; }
-_save()   { eval "$($CD_BIN/cdext-save $*)";}
-_setcd()  { eval "$($CD_BIN/cdext-setcd $*)";}
+_mycd()   { eval "$($CD_BIN/cdext ccd $*)";}
+_delete() { eval "$($CD_BIN/cdext delete $*)";}
+_list()   { $CD_BIN/cdext list $*; }
+_save()   { eval "$($CD_BIN/cdext save $*)";}
+_setcd()  { eval "$($CD_BIN/cdext setcd $*)";}
 
 # aliased commands
 alias cd=_mycd

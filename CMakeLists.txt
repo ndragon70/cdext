@@ -2,21 +2,27 @@ cmake_minimum_required (VERSION 3.0)
 
 project(cdext)
 
-set(VERSION "1.2.5")
-set(COMMON_SRC cd-ext.c parse.c)
+set(VERSION "1.3.0")
+set(SRC 
+ cd-ext.c
+ parse.c
+ ccd.c
+ list.c 
+ delete.c
+ save.c
+ setcd.c
+)
 
-add_executable(cdext-ccd    ${COMMON_SRC} ccd.c)
-add_executable(cdext-list   ${COMMON_SRC} list.c)
-add_executable(cdext-delete ${COMMON_SRC} delete.c)
-add_executable(cdext-save   ${COMMON_SRC} save.c)
-add_executable(cdext-setcd  ${COMMON_SRC} setcd.c)
+set(BUILD_SHARED_LIBRARIES OFF)
+set(CMAKE_EXE_LINKER_FLAGS "-static")
 
+add_library(cdext-common STATIC ${SRC})
+add_executable(cdext cdext-multi.c)
+target_link_libraries(cdext cdext-common)
+ 
 include(GNUInstallDirs)
-install(TARGETS cdext-ccd    DESTINATION bin)
-install(TARGETS cdext-list   DESTINATION bin)
-install(TARGETS cdext-delete DESTINATION bin)
-install(TARGETS cdext-save   DESTINATION bin)
-install(TARGETS cdext-setcd  DESTINATION bin)
+install(TARGETS cdext DESTINATION bin)
+
 install(FILES "cdext.1" DESTINATION "${CMAKE_INSTALL_MANDIR}/man1" COMPONENT doc)
 install(FILES "cdext-setup.bash" DESTINATION "/etc/profile.d" RENAME cdext.sh)
 

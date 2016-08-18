@@ -91,13 +91,13 @@ char *pop_stack       ( int pop );
 char *set_stack       ( char *command );
 
 
-int main( int argc, char **argv )
+int main_ccd( int argc, char **argv )
 {
      char netpath[MAXSIZE];
      char shortpath[MAXSIZE];
      char command[MAXSIZE];
 
-     initialize( argv[0] );
+     initialize( argv[1] );
 
      switch ( PARSE_command_line( argc, argv ) )
      {

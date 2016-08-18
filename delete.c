@@ -69,19 +69,19 @@ struct list_record list[100];
 
 int  dir_list_size = 0;
 
-void  initialize    ( char *progname );
-int   isrange       ( struct range_struct *r, char *s );
-char *compress_args ( int argc, char **argv );
-void  delete        ( char *name, int first, int second );
-void  process_delete( int argc, char **argv );
-void  load          ( char *filename );
-void  save          ( char *filename );
+static void  initialize    ( char *progname );
+static int   isrange       ( struct range_struct *r, char *s );
+static char *compress_args ( int argc, char **argv );
+static void  delete        ( char *name, int first, int second );
+static void  process_delete( int argc, char **argv );
+static void  load          ( char *filename );
+static void  save          ( char *filename );
 
 
-int main( int argc, char **argv )
+int main_delete( int argc, char **argv )
 {
      
-     initialize( argv[0] );     
+     initialize( argv[1] );     
 
      load( CD_directory_list_path );
      

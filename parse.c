@@ -88,19 +88,21 @@ int PARSE_command_line( int argc, char **argv )
      {
           if ( command_array[x].iswild  ) pass_on = TRUE;
           
-          if ( command_array[x].number_of_tokens == argc - 1 )
+          if ( command_array[x].number_of_tokens == argc - 2 )
           {
                parse_error = FALSE;
                
-               for ( y = 1; ( y < argc ) && ( !parse_error); y++ )
+               for ( y = 2; ( y < argc ) && ( !parse_error); y++ )
                {
-                    if ( command_array[x].token_array[y-1].token_type == VARIABLE )
+                    //printf("argv[%d]=%s, type=%d\n",y, argv[y], command_array[x].token_array[y-2].token_type);
+                    if ( command_array[x].token_array[y-2].token_type == VARIABLE )
                     {
                          strcpy( command_value[number_of_variables++], argv[y] );
                     }
                     else
                     {
-                         if ( strcmp( command_array[x].token_array[y-1].token, argv[y] ) != 0 )
+                         //printf("token=%s\n", command_array[x].token_array[y-2].token);
+                         if ( strcmp( command_array[x].token_array[y-2].token, argv[y] ) != 0 )
                          {
                               parse_error = TRUE;
                          }

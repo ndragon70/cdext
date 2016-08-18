@@ -53,14 +53,14 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISE
 
 #define DEFAULT_SHORT_NAME "_"
 
-void initialize  ( char *progname );
-void save_as_user( char *cwd, char *name, char *user );
-void save        ( char *cwd, char *name );
+static void initialize  ( char *progname );
+static void save_as_user( char *cwd, char *name, char *user );
+static void save        ( char *cwd, char *name );
 
-int main( int argc, char **argv )
+int main_save( int argc, char **argv )
 {
      
-     initialize( argv[0] );     
+     initialize( argv[1] );     
      
      switch ( PARSE_command_line( argc, argv ) )
      {

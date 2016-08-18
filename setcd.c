@@ -37,16 +37,16 @@
 
 static int csh_shell = 0;
                  
-void initialize    ( char *progname );
-void set_cd_all    ( void );
-void set_cd_user   ( void );
-void set_cd_style  ( int stack_style );
-void set_cd_size   ( void );
-void set_cd_path_format( int cd_path_format );
+static void initialize    ( char *progname );
+static void set_cd_all    ( void );
+static void set_cd_user   ( void );
+static void set_cd_style  ( int stack_style );
+static void set_cd_size   ( void );
+static void set_cd_path_format( int cd_path_format );
 
-int main( int argc, char **argv )
+int main_setcd( int argc, char **argv )
 {
-     initialize( argv[0] );
+     initialize( argv[1] );
 
      switch ( PARSE_command_line( argc, argv ) )
      {

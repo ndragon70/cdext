@@ -65,17 +65,17 @@ struct list_record {
 struct list_record list_array[MAX_LIST_SIZE];
 
 
-void initialize    ( char *progname );
-void list_directory( void );
-void list_stack    ( void );
-void load          ( char *filename );
-void save          ( char *filename );
-int  listcmp       ( const void *x, const void *y );
-void sort_list     ( void );
+static void initialize    ( char *progname );
+static void list_directory( void );
+static void list_stack    ( void );
+static void load          ( char *filename );
+static void save          ( char *filename );
+static int  listcmp       ( const void *x, const void *y );
+static void sort_list     ( void );
 
-int main( int argc, char **argv )
+int main_list( int argc, char **argv )
 {
-     initialize( argv[0] ); 
+     initialize( argv[1] ); 
 
      switch ( PARSE_command_line( argc, argv ) )
      {
