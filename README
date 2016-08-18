@@ -16,7 +16,7 @@ o	Build
 	$ ./scripts/build 
 
 o Install RPM
-	$ rpm -Ivh cdext-1.x.x-0.x86_64.rpm
+	$ rpm -ivh cdext-1.x.x-0.x86_64.rpm
 
 o Man Page
 	$ man cdext
