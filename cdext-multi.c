@@ -17,11 +17,11 @@ int main(int argc, char **argv)
     }
     if (strcmp(argv[1], "list") == 0) {
         ret = main_list(argc, argv);
-    } else if (strcmp(argv[1], "ccd") ==0) {
+    } else if (strcmp(argv[1], "ccd") == 0) {
         ret = main_ccd(argc, argv);
-    } else if (strcmp(argv[1], "save") ==0) {
+    } else if (strcmp(argv[1], "save") == 0) {
         ret = main_save(argc, argv);
-    } else if (strcmp(argv[1], "delete") ==0) {
+    } else if (strcmp(argv[1], "delete") == 0) {
         ret = main_delete(argc, argv);
     } else if (strcmp(argv[1], "setcd") ==0) {
         ret = main_setcd(argc, argv);

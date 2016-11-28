@@ -94,7 +94,7 @@ int main_delete( int argc, char **argv )
           CD_usage_error( "[ ALL ] | [ <short name> | # | #-# [, <short name> | # | #-# [ , ... ] ]" );
           break;
      default :
-          process_delete( argc, argv );     
+          process_delete( argc-1, ++argv );
      }
 
      save( CD_directory_list_path );
