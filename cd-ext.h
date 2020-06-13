@@ -49,6 +49,12 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISE
 #define MAXPATHLEN 1024
 #endif
 
+extern char CD_home_directory[MAXPATHLEN];
+extern int  CD_path_format;
+extern char CD_current_working_directory[MAXPATHLEN];
+extern char CD_directory_list_path[MAXPATHLEN];
+extern char CD_progname[MAXPATHLEN];
+
 #define CD_MAX_SHORTNAME_SIZE 16
 #define CD_ERROR            0
 #define CD_SUCCESS          1
@@ -56,12 +62,6 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISE
 #define CD_ABSOLUTE_FORMAT  0
 #define CD_LOGICAL_FORMAT   1
 #define CD_STACK_DELIM    ";"
-
-char CD_home_directory[MAXPATHLEN];
-int  CD_path_format;
-char CD_current_working_directory[MAXPATHLEN];
-char CD_directory_list_path[MAXPATHLEN];
-char CD_progname[MAXPATHLEN];
 
 void  CD_stoupper          ( char *s );
 char *CD_is_valid_shortname( char *s );

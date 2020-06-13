@@ -15,10 +15,8 @@ set(SRC
 
 set(BUILD_SHARED_LIBRARIES OFF)
 set(CMAKE_EXE_LINKER_FLAGS "-static")
-
-add_library(cdext-common STATIC ${SRC})
-add_executable(cdext cdext-multi.c)
-target_link_libraries(cdext cdext-common)
+#add_definitions(-Werror)
+add_executable(cdext cdext-multi.c ${SRC})
  
 include(GNUInstallDirs)
 install(TARGETS cdext DESTINATION bin)

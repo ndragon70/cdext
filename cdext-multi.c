@@ -2,6 +2,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "cd-ext.h"
+
+char CD_home_directory[MAXPATHLEN];
+int  CD_path_format;
+char CD_current_working_directory[MAXPATHLEN];
+char CD_directory_list_path[MAXPATHLEN];
+char CD_progname[MAXPATHLEN];
+
 int main_list(int argc, char **argv);
 int main_ccd(int argc, char **argv);
 int main_save(int argc, char **argv);
