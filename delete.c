@@ -163,8 +163,8 @@ char *compress_args( int argc, char **argv )
 
 void delete( char *name, int first, int second )
 {
-     char temp_command[MAXPATHLEN];
-     char output_command[MAXPATHLEN];
+     char temp_command[BUFSIZ*2+24];
+     char output_command[BUFSIZ*2+24];
      int  found = FALSE;
      int  index;
      int csh_shell = 0;

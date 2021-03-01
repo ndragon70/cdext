@@ -49,11 +49,11 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISE
 #define MAXPATHLEN 1024
 #endif
 
-extern char CD_home_directory[MAXPATHLEN];
+extern char CD_home_directory[BUFSIZ];
 extern int  CD_path_format;
-extern char CD_current_working_directory[MAXPATHLEN];
-extern char CD_directory_list_path[MAXPATHLEN];
-extern char CD_progname[MAXPATHLEN];
+extern char CD_current_working_directory[BUFSIZ];
+extern char CD_directory_list_path[BUFSIZ*2+2];
+extern char CD_progname[BUFSIZ];
 
 #define CD_MAX_SHORTNAME_SIZE 16
 #define CD_ERROR            0

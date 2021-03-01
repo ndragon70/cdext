@@ -4,11 +4,11 @@
 
 #include "cd-ext.h"
 
-char CD_home_directory[MAXPATHLEN];
+char CD_home_directory[BUFSIZ];
 int  CD_path_format;
-char CD_current_working_directory[MAXPATHLEN];
-char CD_directory_list_path[MAXPATHLEN];
-char CD_progname[MAXPATHLEN];
+char CD_current_working_directory[BUFSIZ];
+char CD_directory_list_path[BUFSIZ*2+2];
+char CD_progname[BUFSIZ];
 
 int main_list(int argc, char **argv);
 int main_ccd(int argc, char **argv);

@@ -50,4 +50,8 @@ set(CPACK_RPM_RELOCATION_PATHS "/etc/profile.d")
 set(CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-${CPACK_PACKAGE_RELEASE}.${CMAKE_SYSTEM_PROCESSOR}")
 # hack to produce a more sane rpm
 set(CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST_ADDITION /usr/local /usr/local/bin /etc/profile.d /usr/local/share /usr/local/share/man /usr/local/share/man/man1)
+
+set(CPACK_GENERATOR "DEB")
+SET(CPACK_DEBIAN_PACKAGE_MAINTAINER "KK") 
+
 include(CPack)
