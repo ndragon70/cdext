@@ -40,6 +40,7 @@ if (CPACK_RPM_PACKAGE_RELEASE EQUAL 0)
 set(CPACK_RPM_PACKAGE_RELEASE "0 ")
 endif()
 
+set(CPACK_GENERATOR "RPM;DEB")
 set(CPACK_RPM_PACKAGE_LICENSE "BSD")
 set(CPACK_PACKAGE_CONTACT "James Newell")
 set(CPACK_PACKAGE_VENDOR "Newell Inc")
@@ -51,7 +52,7 @@ set(CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-${CP
 # hack to produce a more sane rpm
 set(CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST_ADDITION /usr/local /usr/local/bin /etc/profile.d /usr/local/share /usr/local/share/man /usr/local/share/man/man1)
 
-set(CPACK_GENERATOR "DEB")
-SET(CPACK_DEBIAN_PACKAGE_MAINTAINER "KK") 
+#set(CPACK_GENERATOR "DEB")
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER "James Newell")
 
 include(CPack)
